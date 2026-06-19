@@ -1,21 +1,9 @@
 from pathlib import Path
 
 TOPICS = [
-    "Arrays",
-    "Strings",
-    "Recursion",
-    "LinkedList",
-    "Stack",
-    "Queue",
-    "HashMap",
-    "Trees",
-    "BST",
-    "Heap",
-    "Graph",
-    "DynamicProgramming",
-    "Greedy",
-    "SlidingWindow",
-    "Backtracking",
+    "Arrays","Strings","Recursion","LinkedList","Stack",
+    "Queue","HashMap","Trees","BST","Heap","Graph",
+    "DynamicProgramming","Greedy","SlidingWindow","Backtracking"
 ]
 
 topic_counts = {}
@@ -30,44 +18,36 @@ for topic in TOPICS:
         java_files = list(folder.glob("*.java"))
         count = len(java_files)
 
-        for file in java_files:
-            recent.append(f"- {topic} / {file.stem}")
+        for f in java_files:
+            recent.append(f"- {topic} / {f.stem}")
 
     topic_counts[topic] = count
     total += count
 
-# STATS
+
 stats = f"""| Metric | Count |
 |-------|------:|
 | Total Problems | {total} |
 """
 
-# TOPICS
 topics = "| Topic | Problems |\n|------|----------:|\n"
-for topic in TOPICS:
-    topics += f"| {topic} | {topic_counts[topic]} |\n"
+for t in TOPICS:
+    topics += f"| {t} | {topic_counts[t]} |\n"
 
-# RECENT
 recent_text = "\n".join(recent[-5:]) if recent else "No problems solved yet."
 
 readme = Path("README.md")
 text = readme.read_text(encoding="utf-8")
 
-text = text.replace(
-    "<!-- STATS_START -->\nLoading...\n<!-- STATS_END -->",
-    f"<!-- STATS_START -->\n{stats}\n<!-- STATS_END -->"
-)
+def replace_section(start, end, content):
+    before = text.split(start)[0]
+    after = text.split(end)[1]
+    return before + start + "\n" + content + "\n" + end + after
 
-text = text.replace(
-    "<!-- TOPICS_START -->\nLoading...\n<!-- TOPICS_END -->",
-    f"<!-- TOPICS_START -->\n{topics}\n<!-- TOPICS_END -->"
-)
-
-text = text.replace(
-    "<!-- RECENT_START -->\nLoading...\n<!-- RECENT_END -->",
-    f"<!-- RECENT_START -->\n{recent_text}\n<!-- RECENT_END -->"
-)
+text = replace_section("<!-- STATS_START -->", "<!-- STATS_END -->", stats)
+text = replace_section("<!-- TOPICS_START -->", "<!-- TOPICS_END -->", topics)
+text = replace_section("<!-- RECENT_START -->", "<!-- RECENT_END -->", recent_text)
 
 readme.write_text(text, encoding="utf-8")
 
-print("README updated successfully!")
+print("README updated successfully")
