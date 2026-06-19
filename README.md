@@ -43,5 +43,5 @@ A collection of my Java DSA solutions with automatic statistics.
 ## 🕒 Recently Solved
 
 <!-- RECENT_START -->
-Loading...
+No problems solved yet.
 <!-- RECENT_END -->
