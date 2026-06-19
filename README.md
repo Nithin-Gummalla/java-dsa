@@ -35,22 +35,10 @@ A collection of my Java solutions for Data Structures and Algorithms.
 - Master problem-solving in Java
 - Prepare for coding interviews
 
-## 📈 Progress
+## 📊 Progress
 
-| Topic | Solved |
-|--------|--------|
-| Arrays | 0 |
-| Strings | 0 |
-| Recursion | 0 |
-| Linked List | 0 |
-| Stack | 0 |
-| Queue | 0 |
-| HashMap | 0 |
-| Trees | 0 |
-| BST | 0 |
-| Heap | 0 |
-| Graph | 0 |
-| Dynamic Programming | 0 |
-| Greedy | 0 |
-| Sliding Window | 0 |
-| Backtracking | 0 |
+<!-- START_PROGRESS -->
+
+Loading...
+
+<!-- END_PROGRESS -->
