@@ -20,14 +20,18 @@ TOPICS = [
 
 topic_counts = {}
 total = 0
+recent = []
 
 for topic in TOPICS:
     folder = Path(topic)
-
     count = 0
 
     if folder.exists():
-        count = sum(1 for item in folder.iterdir() if item.is_dir())
+        java_files = list(folder.glob("*.java"))
+        count = len(java_files)
+
+        for file in java_files:
+            recent.append(f"- {topic} / {file.stem}")
 
     topic_counts[topic] = count
     total += count
@@ -42,8 +46,9 @@ topics = "| Topic | Problems |\n|------|----------:|\n"
 for topic in TOPICS:
     topics += f"| {topic} | {topic_counts[topic]} |\n"
 
-readme = Path("README.md")
+recent_text = "\n".join(recent[-5:]) if recent else "No problems solved yet."
 
+readme = Path("README.md")
 text = readme.read_text(encoding="utf-8")
 
 text = text.replace(
@@ -54,6 +59,11 @@ text = text.replace(
 text = text.replace(
     "<!-- TOPICS_START -->\nLoading...\n<!-- TOPICS_END -->",
     f"<!-- TOPICS_START -->\n{topics}\n<!-- TOPICS_END -->"
+)
+
+text = text.replace(
+    "<!-- RECENT_START -->\nLoading...\n<!-- RECENT_END -->",
+    f"<!-- RECENT_START -->\n{recent_text}\n<!-- RECENT_END -->"
 )
 
 readme.write_text(text, encoding="utf-8")
