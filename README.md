@@ -9,7 +9,7 @@ A collection of my Java DSA solutions with automatic statistics.
 <!-- STATS_START -->
 | Metric | Count |
 |-------|------:|
-| Total Problems | 0 |
+| Total Problems | 1 |
 
 <!-- STATS_END -->
 
@@ -20,7 +20,7 @@ A collection of my Java DSA solutions with automatic statistics.
 <!-- TOPICS_START -->
 | Topic | Problems |
 |------|----------:|
-| Arrays | 0 |
+| Arrays | 1 |
 | Strings | 0 |
 | Recursion | 0 |
 | LinkedList | 0 |
@@ -43,5 +43,5 @@ A collection of my Java DSA solutions with automatic statistics.
 ## 🕒 Recently Solved
 
 <!-- RECENT_START -->
-No problems solved yet.
+- Arrays / TwoSum
 <!-- RECENT_END -->
