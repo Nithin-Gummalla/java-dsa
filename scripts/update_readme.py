@@ -36,16 +36,18 @@ for topic in TOPICS:
     topic_counts[topic] = count
     total += count
 
+# STATS
 stats = f"""| Metric | Count |
 |-------|------:|
 | Total Problems | {total} |
 """
 
+# TOPICS
 topics = "| Topic | Problems |\n|------|----------:|\n"
-
 for topic in TOPICS:
     topics += f"| {topic} | {topic_counts[topic]} |\n"
 
+# RECENT
 recent_text = "\n".join(recent[-5:]) if recent else "No problems solved yet."
 
 readme = Path("README.md")
